@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cube Timer</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/timer.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module" src="./script/main.js" defer></script>
+    <script type="module" src="./script/localDatabase.js" defer></script>
 </head>
+
 <body>
     <div class="timer">
-        <span id="second">0</span>.<span id="millisecond">00</span>
+        <span id="second">0</span><span id="millisecond">.00</span>
     </div>
+    <div class="options hide-option">
+        <button class="timer-option" id="delete-solve">
+            <img class="icon" src="./assets/icons/times-solid.svg">
+        </button>
+
+        <button class="timer-option id="dnf"">
+            <img class="icon" src="./assets/icons/ban-solid.svg">
+        </button>
+
+        <button class="timer-option" id="penalty">
+            <img class="icon" src="./assets/icons/flag-regular.svg">
+        </button>
+        <button class="timer-option" id="add-comment">
+            <img class="icon" src="./assets/icons/sticky-note-regular.svg">
+        </button>
+    </div>
+
 </body>
+
 </html>

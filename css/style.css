@@ -1,52 +1,78 @@
-
 @font-face {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    src: url(../assets/fonts/Poppins-Regular.ttf);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  src: url(../assets/fonts/Poppins-Regular.ttf);
 }
 
 @font-face {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    src: url(../assets/fonts/Poppins-Medium.ttf);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  src: url(../assets/fonts/Poppins-Medium.ttf);
 }
 
 @font-face {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    src: url(../assets/fonts/Poppins-Bold.ttf);
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 400;
+  src: url(../assets/fonts/Oxygen-Regular.ttf);
 }
 
 :root {
-    --primary-color: ;
+  --primary-color: royalblue;
+  --text-color: #fff;
 }
 
 /* * Property reset */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    min-height: 100vh;
-    width: 70%;
-    margin: auto;
-    font-family: 'Poppins', sans-serif;
-    background-color:royalblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  width: 70%;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #06beb6, #48b1bf);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.icon {
+  height: 25px;
+  filter: invert(84%) sepia(55%) saturate(0%) hue-rotate(141deg)
+    brightness(109%) contrast(100%);
+}
+
+.icon:hover {
+  filter: invert(79%) sepia(88%) saturate(0%) hue-rotate(166deg) brightness(96%)
+    contrast(85%);
 }
 
 .timer {
-    color: #fff;
-    font-size: 10rem;
+  color: #fff;
+  font-size: 11rem;
+  font-family: 'Oxygen', sans-serif;
 }
 
-.timer #millisecond{
-    color: #fff;
-    font-size: 8rem;
+.timer #millisecond {
+  font-size: 8.5rem;
 }
 
+.options {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 75px;
+}
+
+.hide-option {
+  display: none;
+}
