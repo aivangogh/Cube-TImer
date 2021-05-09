@@ -12,26 +12,144 @@
 </head>
 
 <body>
-    <div class="timer">
-        <span id="second">0</span><span id="millisecond">.00</span>
+    <div class="container">
+        <div id="graph-wrapper" class="hide">
+            <div class="graph-header"><span>Graph</span></div>
+        </div>
+        <div class="main-content">
+            <div id="main-header" class="hide">
+                <div id="settings">
+                    <img src="./assets/icons/cog-solid.svg">
+                </div>
+                <div id="puzzle">
+                    <button class="button">
+                        <span id="type-of-puzzle">3x3 Cube</span>
+                    </button>
+                    <span id="name-of-category">normal</span>
+                </div>
+                <div id="catergory">
+                    <img src="./assets/icons/list-alt-regular.svg">
+                </div>
+            </div>
+            <div id="scrumble-wrapper" class="hide">
+                <span class="scrumble">F B U2 D' R L U F' B R2 L' F B U2 D' R L R L U</span>
+            </div>
+            <div class="timer-wrapper ">
+                <div id="timer">
+                    <span id="minute" style="display: none;">0</span>
+                    <span id="minute-colon" style="display: none;">:</span>
+                    <span id="second">0</span>
+                    <span id="millisecond-period">.</span>
+                    <span id="millisecond">00</span>
+                    <span id="dnf-span" style="display: none;">DNF</span>
+                    <span id="add-penalty-span" style="display: none;"></span>
+                </div>
+            </div>
+            <div class="actions">
+                <div id="options-wrapper" style="display: none;">
+                    <button class="button" id="remove-solve">
+                        <img class="icon" src="./assets/icons/times-solid.svg">
+                    </button>
+                    <button class="button" id="dnf">
+                        <img class="icon" src="./assets/icons/ban-solid.svg">
+                    </button>
+
+                    <button class="button" id="add-penalty">
+                        <img class="icon" src="./assets/icons/flag-regular.svg">
+                    </button>
+                    <button class="button" id="add-note">
+                        <img class="icon" src="./assets/icons/sticky-note-regular.svg">
+                    </button>
+                </div>
+                <button id="undo-button" class="button" style="display: none;">Undo</button>
+            </div>
+
+            <div id="statistics-wrapper" class="hide">
+                <div id="stats">
+                    <span classs="deviation">Deviation: <span>21.25</span></span>
+                    <span classs="mean">Mean: <span>10.2</span></span>
+                    <span classs="best-solve">Best: <span>10.1</span></span>
+                    <span classs="solve-count">Count: <span>22</span></span>
+                </div>
+                <div id="visual-cube-scrumble">
+                    <span>cube</span>
+                </div>
+                <div id="average">
+                    <span class="ao5">Ao5: <span>23.1</span></span>
+                    <span class="ao12">Ao12: <span>23.1</span></span>
+                    <span class="ao50">Ao50: <span>--</span></span>
+                    <span class="ao100">Ao100: <span>--</span></span>
+                </div>
+            </div>
+
+        </div>
+        <div id="solves-wrapper" class="hide">
+            <div class="record-header"><span>Solves</span></div>
+            <div class="record">
+                <div class="card">
+                    <span class="date">05/01</span>
+                    <div class="solve">
+                        <span>1:</span>
+                        <span>26</span>
+                        <span class="millisecond">.12</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="date">05/01</span>
+                    <div class="solve">
+                        <span>1:</span>
+                        <span>26</span>
+                        <span class="millisecond">.12</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="date">05/01</span>
+                    <div class="solve">
+                        <span>1:</span>
+                        <span>26</span>
+                        <span class="millisecond">.12</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="date">05/01</span>
+                    <div class="solve">
+                        <span>1:</span>
+                        <span>26</span>
+                        <span class="millisecond">.12</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="date">05/01</span>
+                    <div class="solve">
+                        <span>1:</span>
+                        <span>26</span>
+                        <span class="millisecond">.12</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end of container -->
+    <!-- Modals -->
+    <div class="modal">
+        <div id="remove-solve-modal">
+            <span>Remove solve?</span>
+            <div class="remove-actions">
+                <button class="cancel-button">Cancel</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
     </div>
-    <div class="options hide-option">
-        <button class="timer-option" id="delete-solve">
-            <img class="icon" src="./assets/icons/times-solid.svg">
-        </button>
-
-        <button class="timer-option id="dnf"">
-            <img class="icon" src="./assets/icons/ban-solid.svg">
-        </button>
-
-        <button class="timer-option" id="penalty">
-            <img class="icon" src="./assets/icons/flag-regular.svg">
-        </button>
-        <button class="timer-option" id="add-comment">
-            <img class="icon" src="./assets/icons/sticky-note-regular.svg">
-        </button>
-    </div>
-
+    <!-- <div class="modal">
+        <div id="add-note-modal">
+            <span class="header">Add note</span>
+            <textarea name="add-note" id="add-note" cols="25" rows="3"></textarea>
+            <div class="actions">
+                
+            </div>
+        </div>
+    </div> -->
+    <div id="overlay"></div>
 </body>
 
 </html>

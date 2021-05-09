@@ -33,11 +33,11 @@ request.onsuccess = function (e) {
   let timestamp = newSolve.timestamp;
   let solve = newSolve.solve;
 
-  store.put({
-    typeOfPuzzle: typeOfPuzzle,
-    timestamp: timestamp,
-    solve: solve,
-  });
+  // store.put({
+  //   typeOfPuzzle: typeOfPuzzle,
+  //   timestamp: timestamp,
+  //   solve: solve,
+  // });
   transac.oncomplete = () => db.close();
 };
 
