@@ -1,0 +1,5 @@
+List of bugs
+when if dnf, it still start the timer but wont properly work
+when if add penaly, it still start the timer but wont properly work
+- add note wont clear after input someting 
+- save data after next space start

@@ -1,24 +1,25 @@
+import { testLog } from './timer.js';
+
 const minuteElement = document.querySelector('#minute');
-const minuteColonElement = document.querySelector('#minute-colon');
+const colonElement = document.querySelector('#colon');
 const secondElement = document.querySelector('#second');
-const millisecondPeriodElement = document.querySelector('#millisecond-period');
+const decimalElement = document.querySelector('#decimal');
 const millisecondElement = document.querySelector('#millisecond');
 const timerElement = document.querySelector('#timer');
 
-const optionsElement = document.querySelector('#options-wrapper');
+const actionsElements = document.querySelector('#actions-wrapper');
 const dnfSpanElement = document.querySelector('#dnf-span');
 const undoButtonElement = document.querySelector('#undo-button');
 const addPenaltySpanElement = document.querySelector('#add-penalty-span');
 
 const removeSolveButton = document.querySelector('#remove-solve-modal');
+const addNoteButton = document.querySelector('#add-note-modal');
 const overlayElement = document.querySelector('#overlay');
 
 const hideElements = document.querySelectorAll('.hide');
 
-import { testLog } from './timer.js';
-
 export default class Dom {
-  timerStart() {
+  timerRunning() {
     timerElement.style.transform = 'scale(1.20)';
     timerElement.style.transition = '300ms ease-in';
   }
@@ -30,9 +31,9 @@ export default class Dom {
   // * Hide Timer
   hideTimer() {
     minuteElement.style.display = 'none';
-    minuteColonElement.style.display = 'none';
+    colonElement.style.display = 'none';
     second.style.display = 'none';
-    millisecondPeriodElement.style.display = 'none';
+    decimalElement.style.display = 'none';
     millisecondElement.style.display = 'none';
   }
 
@@ -40,54 +41,58 @@ export default class Dom {
   showTimer(minute) {
     if (minute === 0) {
       second.style.display = 'flex';
-      millisecondPeriodElement.style.display = 'flex';
+      decimalElement.style.display = 'flex';
       millisecondElement.style.display = 'flex';
       return;
     }
 
     minuteElement.style.display = 'flex';
-    minuteColonElement.style.display = 'flex';
+    colonElement.style.display = 'flex';
     second.style.display = 'flex';
-    millisecondPeriodElement.style.display = 'flex';
+    decimalElement.style.display = 'flex';
     millisecondElement.style.display = 'flex';
   }
 
   // * Show minute
   showMinute() {
     minuteElement.style.display = 'flex';
-    minuteColonElement.style.display = 'flex';
+    colonElement.style.display = 'flex';
   }
 
   // * Hide minute
   hideMinute() {
     minuteElement.style.display = 'none';
-    minuteColonElement.style.display = 'none';
+    colonElement.style.display = 'none';
   }
 
   // * Show options after the solve
-  showOption() {
-    optionsElement.style.display = 'flex';
-    optionsElement.style.transition = '300ms ease-in';
+  showActions() {
+    actionsElements.style.display = 'flex';
+    actionsElements.style.transition = '300ms ease-in';
   }
 
   // * Hide solve options
-  hideOption() {
-    optionsElement.style.display = 'none';
-    optionsElement.style.transition = '300ms ease-in';
+  hideActions() {
+    actionsElements.style.display = 'none';
+    actionsElements.style.transition = '300ms ease-in';
     undoButtonElement.style.display = 'none';
   }
 
   // * Undo action
-  undoAction(undoActionState) {
-    if (undoActionState === true) {
-      this.hideOption();
-      undoButtonElement.style.display = 'flex';
-    }
+  undoAction(isSpecialActionUsed) {
+    if (isSpecialActionUsed === true) this.showUndoButton();
 
-    if (undoActionState === false) {
-      this.showOption();
-      undoButtonElement.style.display = 'none';
-    }
+    if (isSpecialActionUsed === false) this.hideUndoButton();
+  }
+
+  showUndoButton() {
+    this.hideActions();
+    undoButtonElement.style.display = 'flex';
+  }
+
+  hideUndoButton() {
+    this.showActions();
+    undoButtonElement.style.display = 'none';
   }
 
   // * Remove solve
@@ -115,7 +120,6 @@ export default class Dom {
 
   // * Add penalty
   addPenalty(minute, second, millisecond) {
-    testLog('dom add penalty');
     const millisecondTemplate = `<span style='font-size: 8.5rem;'>.${millisecond} +</span>`;
     const secondTemplate = `<span style='display: flex; justify-content: center; align-items: baseline;'>${second}${millisecondTemplate}</span>`;
     const minuteTemplate = `<span style='display: flex; justify-content: center; align-items: baseline;'>${minute}:${second}${millisecondTemplate}</span>`;
@@ -129,15 +133,13 @@ export default class Dom {
     }
   }
 
-  showAddPenaltySpan() {
+  showPenaltySpan() {
     addPenaltySpanElement.style.display = 'flex';
   }
 
-  hideAddPenaltySpan() {
+  hidePenaltySpan() {
     addPenaltySpanElement.style.display = 'none';
   }
-
-  
 
   hideElements() {
     hideElements.forEach((element) => {
@@ -153,16 +155,22 @@ export default class Dom {
 
   // ***** MODAL
   showRemoveModal() {
-    removeSolveButton.classList.add('active');
+    removeSolveButton.style.display = 'flex';
     overlayElement.classList.add('active');
   }
 
   hideRemoveModal() {
-    removeSolveButton.classList.remove('active');
+    removeSolveButton.style.display = 'none';
     overlayElement.classList.remove('active');
   }
   // * Add note
-  addNote(note) {
-    // code here
+  showAddNote() {
+    addNoteButton.style.display = 'flex';
+    overlayElement.classList.add('active');
+  }
+
+  hideAddNote() {
+    addNoteButton.style.display = 'none';
+    overlayElement.classList.remove('active');
   }
 }

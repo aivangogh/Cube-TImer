@@ -72,7 +72,9 @@ body {
   z-index: 10;
 }
 
-.cancel-button, .remove-button {
+.cancel-button,
+.remove-button,
+.done-button {
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
@@ -80,19 +82,21 @@ body {
 
 .cancel-button {
   background-color: #ebebeb;
-} 
+}
 
 .cancel-button:hover {
   background-color: #d6d6d6;
   cursor: pointer;
-} 
+}
 
-.remove-button {
+.remove-button,
+.done-button {
   background-color: #3779ff;
   color: #fff;
 }
 
-.remove-button:hover {
+.remove-button:hover,
+.done-button:hover {
   background-color: #2f69df;
   cursor: pointer;
 }
@@ -126,35 +130,24 @@ body {
 }
 
 #remove-solve-modal {
+  flex-direction: column;
+  padding: 20px;
+  gap: 50px;
   border-radius: 10px;
   background-color: #fff;
   color: #333;
   font-size: 14px;
   width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  transform: scale(0);
   transition: 200ms ease-in-out;
 }
 
-#remove-solve-modal.active {
-  transform: scale(1);
-}
-
-#remove-solve-modal {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 50px;
-}
-
-#remove-solve-modal .remove-actions {
+.action {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
 
-/* #add-note-modal {
+#add-note-modal {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -163,11 +156,19 @@ body {
   padding: 15px;
   font-size: 14px;
   width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  transform: scale(1);
   transition: 200ms ease-in-out;
-} */
+}
+
+#add-note-modal .header {
+  text-align: center;
+}
+
+#add-note-modal #add-note-input {
+  resize: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 15px 0;
+}
 
 #main-header {
   display: grid;
@@ -175,6 +176,8 @@ body {
   grid-template-rows: 1fr;
   background-color: #fff;
   border-radius: 20px;
+  width: 80%;
+  margin: auto;
   height: 50px;
   justify-content: center;
   align-items: center;
@@ -227,6 +230,7 @@ body {
 }
 
 .scrumble {
+  text-align: center;
   font-size: 30px;
   color: var(--text-color);
 }
@@ -258,7 +262,7 @@ body {
 }
 
 #timer #millisecond,
-#timer #millisecond-period {
+#timer #decimal {
   font-size: 9rem;
 }
 
@@ -274,7 +278,7 @@ body {
   font-weight: bold;
 }
 
-#options-wrapper {
+#actions-wrapper {
   padding: 5px;
   display: flex;
   justify-content: center;

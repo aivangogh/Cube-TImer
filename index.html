@@ -37,16 +37,16 @@
             <div class="timer-wrapper ">
                 <div id="timer">
                     <span id="minute" style="display: none;">0</span>
-                    <span id="minute-colon" style="display: none;">:</span>
+                    <span id="colon" style="display: none;">:</span>
                     <span id="second">0</span>
-                    <span id="millisecond-period">.</span>
+                    <span id="decimal">.</span>
                     <span id="millisecond">00</span>
                     <span id="dnf-span" style="display: none;">DNF</span>
                     <span id="add-penalty-span" style="display: none;"></span>
                 </div>
             </div>
             <div class="actions">
-                <div id="options-wrapper" style="display: none;">
+                <div id="actions-wrapper" style="display: none;">
                     <button class="button" id="remove-solve">
                         <img class="icon" src="./assets/icons/times-solid.svg">
                     </button>
@@ -131,24 +131,25 @@
 
     </div> <!-- end of container -->
     <!-- Modals -->
-    <div class="modal">
-        <div id="remove-solve-modal">
+    <div data-keyboard="false" class="modal">
+        <div id="remove-solve-modal" style="display: none;">
             <span>Remove solve?</span>
-            <div class="remove-actions">
+            <div class="action">
                 <button class="cancel-button">Cancel</button>
                 <button class="remove-button">Remove</button>
             </div>
         </div>
     </div>
-    <!-- <div class="modal">
-        <div id="add-note-modal">
+    <div data-keyboard="false" class="modal">
+        <div id="add-note-modal" style="display: none;">
             <span class="header">Add note</span>
-            <textarea name="add-note" id="add-note" cols="25" rows="3"></textarea>
-            <div class="actions">
-                
+            <textarea name="add-note" id="add-note-input" cols="25" rows="3" placeholder="add note"></textarea>
+            <div class="action">
+                <button class="cancel-button">Cancel</button>
+                <button class="done-button">Done</button>
             </div>
         </div>
-    </div> -->
+    </div>
     <div id="overlay"></div>
 </body>
 
