@@ -1,4 +1,6 @@
+import Format from './format.js';
 import Dom from './dom.js';
+import { addSolve, getAllSolves } from './localDatabase.js';
 
 // * DOM Elements
 const minuteElement = document.querySelector('#minute');
@@ -22,6 +24,7 @@ let typeOfPuzzle = '3x3'; // * Default type of puzzle
 
 let isSolveSave = false;
 const dom = new Dom(); // * Instance of Dom
+const format = new Format();
 
 class Timer {
   // * Main timer
@@ -42,14 +45,14 @@ class Timer {
 
     if (minute > 0) {
       minuteElement.innerText = `${minute}`;
-      secondElement.innerText = formatSecond(second); // * add 0 if second is less than 10
+      secondElement.innerText = format.formatSecond(second); // * add 0 if second is less than 10
     } // * this only happend if 1 min exceeds
 
     // * This statement only functions if minute is 0
     if (minute == 0) {
       secondElement.innerText = second; // * Second will not be formated
     }
-    millisecondElement.innerText = formatMillisecond(millisecond);
+    millisecondElement.innerText = format.formatMillisecond(millisecond);
   }
 
   // * Start timer
@@ -65,17 +68,13 @@ class Timer {
     dom.timerEnd();
     dom.showHideElements();
     dom.showActions();
-
-    //* Test log
-    console.log(
-      `Type of puzzle: ${typeOfPuzzle} Timestamp: ${getTimestamp()} SolveTimer: ${minute}:${second}.${formatMillisecond(
-        millisecond
-      )}`
-    );
+    getAllSolves();
   }
 
   timerReset() {
-    if(isSolveSave === true) saveSolve();
+    if(isSolveSave === true) {
+      saveSolve();
+    }
     
     dom.hideActions();
 
@@ -114,55 +113,51 @@ export function render() {
 }
 
 // * Save Note
-  function saveSolve() {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
+function saveSolve() {
+  const date = new Date();
+  let solve = {
+    timestamp: getTimestamp(),
+    minute,
+    second,
+    millisecond,
+    dnf: isDnf,
+    penalty: havePenalty,
+    note: getInputString(),
+    month: date.getMonth() + 1,
+    day: date.getDate(),
+    year: date.getFullYear(),
+  };
 
-    console.log(minute);
-    console.log(second);
-    console.log(millisecond);
-    console.log(`0${month}/${day}`);
-    console.log(isDnf);
-    console.log(havePenalty);
-    console.log(getInputString());
-  }
+  addSolve(solve);
+}
+
+// * Get Solves
+function getSolves() {
+  let solvesArray = [{}];
+}
 
 // * Testing Function
 export function testLog(messege) {
   console.log(`Log: ${messege}`);
-  console.log(`${minute} ${second} ${formatMillisecond(millisecond)}`);
+  console.log(`${minute} ${second} ${format.formatMillisecond(millisecond)}`);
 }
 
 // ***** FUNCTIONS *****
+
 // * Show formated time
 function showFormatedTime() {
   if (minute === 0) {
     secondElement.innerText = second;
-    millisecondElement.innerText = formatMillisecond(millisecond);
+    millisecondElement.innerText = format.formatMillisecond(millisecond);
     dom.showTimer(minute);
   }
 
   if (minute > 0) {
     minuteElement.innerText = minute;
-    secondElement.innerText = formatSecond(second);
-    millisecondElement.innerText = formatMillisecond(millisecond);
+    secondElement.innerText = format.formatSecond(second);
+    millisecondElement.innerText = format.formatMillisecond(millisecond);
     dom.showTimer(minute);
   }
-}
-
-// * Millisecond format from 3 digits to 2 digits and
-// * placing 0 if ms is less than 100ms
-function formatMillisecond(millisecond) {
-  if (millisecond < 100) return `0${(millisecond / 10).toFixed(0)}`;
-  return `${(millisecond / 10).toFixed(0)}`;
-}
-
-// * Format second when a minute exceeds
-function formatSecond(second) {
-  if (second < 10) return `0${second}`;
-  return second;
 }
 
 // * Convert solve timer
@@ -171,15 +166,6 @@ function convertSolveTime(millisecond) {
   console.log(convertedMinute);
   let convertedSecond = (millisecond / 1000) % 60;
   let convertedMillisecond;
-}
-
-// * Format Date
-function getDate() {
-  const date = new Date(getTimestamp());
-  return {
-    month: date.getMonth(),
-    day: date.getDay()
-  };
 }
 
 // * Get timestamp
@@ -290,11 +276,15 @@ function addPenalty() {
   dom.showPenaltySpan();
 
   if (minute === 0) {
-    dom.addPenalty(minute, second, formatMillisecond(millisecond));
+    dom.addPenalty(minute, second, format.formatMillisecond(millisecond));
     return;
   }
 
-  dom.addPenalty(minute, formatSecond(second), formatMillisecond(millisecond));
+  dom.addPenalty(
+    minute,
+    format.formatSecond(second),
+    format.formatMillisecond(millisecond)
+  );
 }
 
 // * Add note action button
