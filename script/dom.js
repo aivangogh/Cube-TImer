@@ -1,4 +1,4 @@
-import { testLog } from './timer.js';
+import { testLog } from './main.js';
 
 const minuteElement = document.querySelector('#minute');
 const colonElement = document.querySelector('#colon');

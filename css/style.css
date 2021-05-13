@@ -288,17 +288,28 @@ body {
   transition: 300ms ease-in-out;
 }
 
-#statistics-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
+
+#graph {
+  flex-basis: 40%;
 }
 
-#stats {
+#statistics {
+  flex-basis: 60%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  color: var(--text-color);
+}
+
+#statistics span{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  gap: 5px;
+}
+
+#statistics-wrapper {
+  color: var(--text-color);
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
 #visual-cube-scrumble {
@@ -307,32 +318,31 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-#average {
+#stats {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
-#graph-wrapper {
+
+#stats-wrapper {
   padding: 20px;
-}
-
-.graph {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 0 10px;
+  flex-direction: column;
 }
 
 .graph-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   color: var(--text-color);
   font-size: 25px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin: 30px 0 15px 0;
+  margin: 15px 0;
 }
 
 #solves-wrapper {
@@ -345,7 +355,7 @@ body {
   font-size: 25px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin: 30px 0 15px 0;
+  margin: 15px 0;;
 }
 
 .record {
@@ -354,13 +364,14 @@ body {
   flex-wrap: wrap;
   padding: 0 5px;
   height: 80vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .card {
   background-color: #fff;
   margin: 10px;
   padding: 5px 10px;
+  height: 55px;
   width: 100px;
   border-radius: 10px;
   display: grid;
@@ -388,8 +399,3 @@ body {
   font-size: 14px;
 }
 
-#statistics-wrapper {
-  color: var(--text-color);
-  font-size: 13px;
-  letter-spacing: 1px;
-}

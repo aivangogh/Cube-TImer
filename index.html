@@ -12,8 +12,27 @@
 
 <body>
     <div class="container">
-        <div id="graph-wrapper" class="hide">
-            <div class="graph-header"><span>Graph</span></div>
+        <div id="stats-wrapper" class="hide">
+            <div id="graph">
+                <div class="graph-header"><span>Graph</span></div>
+            </div>
+            <div id="statistics">
+                <div>
+                    <span>Deviation: <span class="deviation">--</span></span>
+                    <span>Mean: <span id="mean">--</span></span>
+                    <span>Best: <span class="best-solve">--</span></span>
+                    <span>Count: <span class="solve-count">--</span></span>
+                </div>
+                <div>
+                    <span>Ao5: <span class="ao5">--</span></span>
+                    <span>Ao12: <span class="ao12">--</span></span>
+                    <span>Ao50: <span class="ao50">--</span></span>
+                    <span>Ao100: <span class="ao100">--</span></span>
+                </div>
+                <div id="visual-cube-scrumble">
+                    <span>cube</span>
+                </div>
+            </div>
         </div>
         <div class="main-content">
             <div id="main-header" class="hide">
@@ -63,29 +82,13 @@
                 <button id="undo-button" class="button" style="display: none;">Undo</button>
             </div>
 
-            <div id="statistics-wrapper" class="hide">
-                <div id="stats">
-                    <span classs="deviation">Deviation: <span>21.25</span></span>
-                    <span classs="mean">Mean: <span>10.2</span></span>
-                    <span classs="best-solve">Best: <span>10.1</span></span>
-                    <span classs="solve-count">Count: <span>22</span></span>
-                </div>
-                <div id="visual-cube-scrumble">
-                    <span>cube</span>
-                </div>
-                <div id="average">
-                    <span class="ao5">Ao5: <span>23.1</span></span>
-                    <span class="ao12">Ao12: <span>23.1</span></span>
-                    <span class="ao50">Ao50: <span>--</span></span>
-                    <span class="ao100">Ao100: <span>--</span></span>
-                </div>
-            </div>
+
 
         </div>
         <div id="solves-wrapper" class="hide">
             <div class="record-header"><span>Solves</span></div>
             <div class="record">
-     
+
             </div>
         </div>
 
